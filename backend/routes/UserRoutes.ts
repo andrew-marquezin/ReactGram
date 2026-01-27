@@ -20,18 +20,14 @@ userRouter.put(
   imageUpload.single("profileImage"),
   userController.update,
 );
-
 userRouter.get("/:id", userController.getUserById);
-
 userRouter.get("/profile", authGuard, userController.getCurrentUser);
-
 userRouter.post(
   "/register",
   createUserValidation(),
   validate,
   userController.register,
 );
-
 userRouter.post("/login", loginValidation(), validate, userController.login);
 
 export default userRouter;
