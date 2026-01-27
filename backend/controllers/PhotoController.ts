@@ -199,4 +199,19 @@ export class PhotoController {
       return;
     }
   }
+
+  async searchPhotos(req: Request, res: Response) {
+    const { q } = req.query;
+
+    try {
+      const photos = await Photo.find({
+        title: new RegExp(String(q), "i"),
+      }).exec();
+
+      res.status(200).json(photos);
+    } catch (e) {
+      res.status(422).json({ errors: ["Photo search failed"] });
+      return;
+    }
+  }
 }
