@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   BsSearch,
   BsHouseDoorFill,
@@ -7,12 +7,23 @@ import {
   BsFillCameraFill,
 } from "react-icons/bs";
 import { useAuth } from "../../hooks/useAuth";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../store";
+import { logout, reset } from "../../slices/authSlice";
 
 export default function Navbar() {
   const { auth } = useAuth();
   const { user } = useSelector((state: RootState) => state.auth);
+
+  const navigate = useNavigate();
+  const dispatch: AppDispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+
+    navigate("/login");
+  };
 
   return (
     <nav id="nav">
@@ -42,7 +53,7 @@ export default function Navbar() {
               </NavLink>
             </li>
             <li>
-              <span>Sair</span>
+              <span onClick={handleLogout}>Sair</span>
             </li>
           </>
         ) : (
