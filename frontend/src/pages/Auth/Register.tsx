@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../../store";
 import { register, reset } from "../../slices/authSlice";
-import Message from "../../components/Message";
+import SubmitBtn from "../../components/SubmitBtn";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -64,12 +64,7 @@ export default function Register() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        {loading ? (
-          <input type="submit" disabled value="Aguarde..." />
-        ) : (
-          <input type="submit" value="Cadastrar" />
-        )}
-        {error && <Message msg={error} type="error" />}
+        <SubmitBtn loading={loading} error={error} />
       </form>
       <p>
         Já tem conta? Faça login <Link to="/login">aqui</Link>
