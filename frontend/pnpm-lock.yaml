@@ -13,7 +13,7 @@ importers:
     dependencies:
       '@reduxjs/toolkit':
         specifier: ^2.11.2
-        version: 2.11.2(react@19.2.4)
+        version: 2.11.2(react-redux@9.2.0(@types/react@19.2.10)(react@19.2.4)(redux@5.0.1))(react@19.2.4)
       react:
         specifier: ^19.2.0
         version: 19.2.4
@@ -23,6 +23,9 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.2.4)
+      react-redux:
+        specifier: ^9.2.0
+        version: 9.2.0(@types/react@19.2.10)(react@19.2.4)(redux@5.0.1)
       react-router-dom:
         specifier: ^7.13.0
         version: 7.13.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -375,6 +378,9 @@ packages:
 
   '@types/react@19.2.10':
     resolution: {integrity: sha512-WPigyYuGhgZ/cTPRXB2EwUw+XvsRA3GqHlsP4qteqrnnjDrApbS7MxcGr/hke5iUoeB7E/gQtrs9I37zAJ0Vjw==}
+
+  '@types/use-sync-external-store@0.0.6':
+    resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
 
   '@typescript-eslint/eslint-plugin@8.54.0':
     resolution: {integrity: sha512-hAAP5io/7csFStuOmR782YmTthKBJ9ND3WVL60hcOjvtGFb+HJxH4O5huAcmcZ9v9G8P+JETiZ/G1B8MALnWZQ==}
@@ -875,6 +881,18 @@ packages:
     peerDependencies:
       react: '*'
 
+  react-redux@9.2.0:
+    resolution: {integrity: sha512-ROY9fvHhwOD9ySfrF0wmvu//bKCQ6AeZZq1nJNtbDC+kk5DuSuNX/n6YWYF/SYy7bSba4D4FSz8DJeKY/S/r+g==}
+    peerDependencies:
+      '@types/react': ^18.2.25 || ^19
+      react: ^18.0 || ^19
+      redux: ^5.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      redux:
+        optional: true
+
   react-refresh@0.18.0:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
@@ -1035,6 +1053,11 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
+
+  use-sync-external-store@1.6.0:
+    resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -1278,7 +1301,7 @@ snapshots:
 
   '@oxc-project/types@0.97.0': {}
 
-  '@reduxjs/toolkit@2.11.2(react@19.2.4)':
+  '@reduxjs/toolkit@2.11.2(react-redux@9.2.0(@types/react@19.2.10)(react@19.2.4)(redux@5.0.1))(react@19.2.4)':
     dependencies:
       '@standard-schema/spec': 1.1.0
       '@standard-schema/utils': 0.3.0
@@ -1288,6 +1311,7 @@ snapshots:
       reselect: 5.1.1
     optionalDependencies:
       react: 19.2.4
+      react-redux: 9.2.0(@types/react@19.2.10)(react@19.2.4)(redux@5.0.1)
 
   '@rolldown/binding-android-arm64@1.0.0-beta.50':
     optional: true
@@ -1382,6 +1406,8 @@ snapshots:
   '@types/react@19.2.10':
     dependencies:
       csstype: 3.2.3
+
+  '@types/use-sync-external-store@0.0.6': {}
 
   '@typescript-eslint/eslint-plugin@8.54.0(@typescript-eslint/parser@8.54.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(typescript@5.9.3)':
     dependencies:
@@ -1866,6 +1892,15 @@ snapshots:
     dependencies:
       react: 19.2.4
 
+  react-redux@9.2.0(@types/react@19.2.10)(react@19.2.4)(redux@5.0.1):
+    dependencies:
+      '@types/use-sync-external-store': 0.0.6
+      react: 19.2.4
+      use-sync-external-store: 1.6.0(react@19.2.4)
+    optionalDependencies:
+      '@types/react': 19.2.10
+      redux: 5.0.1
+
   react-refresh@0.18.0: {}
 
   react-router-dom@7.13.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
@@ -1989,6 +2024,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  use-sync-external-store@1.6.0(react@19.2.4):
+    dependencies:
+      react: 19.2.4
 
   which@2.0.2:
     dependencies:

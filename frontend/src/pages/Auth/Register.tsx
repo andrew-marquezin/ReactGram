@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import "./Auth.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "../../store";
+import { register, reset } from "../../slices/authSlice";
+import Message from "../../components/Message";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -8,7 +12,11 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const dispatch: AppDispatch = useDispatch();
+
+  const { loading, error } = useSelector((state: RootState) => state.auth);
+
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
 
     const user = {
@@ -19,7 +27,13 @@ export default function Register() {
     };
 
     console.log(user);
+
+    dispatch(register(user));
   };
+
+  useEffect(() => {
+    dispatch(reset());
+  }, [dispatch]);
 
   return (
     <div id="register">
@@ -50,7 +64,12 @@ export default function Register() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <input type="submit" value="Cadastrar" />
+        {loading ? (
+          <input type="submit" disabled value="Aguarde..." />
+        ) : (
+          <input type="submit" value="Cadastrar" />
+        )}
+        {error && <Message msg={error} type="error" />}
       </form>
       <p>
         Já tem conta? Faça login <Link to="/login">aqui</Link>
