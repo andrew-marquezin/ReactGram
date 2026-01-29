@@ -5,27 +5,27 @@ const createUserValidation = () => {
     body("name")
       .not()
       .isEmpty()
-      .withMessage("Nome é obrigatório")
+      .withMessage("Name is required")
       .isLength({ min: 3 })
-      .withMessage("Nome deve ter pelo menos 3 caracteres"),
+      .withMessage("Name must be at least 3 characters long"),
     body("email")
       .not()
       .isEmpty()
-      .withMessage("Email é obrigatório")
+      .withMessage("Email is required")
       .isEmail()
-      .withMessage("Endereço de email inválido"),
+      .withMessage("Invalid email address"),
     body("password")
       .not()
       .isEmpty()
-      .withMessage("Senha é obrigatória")
+      .withMessage("Password is required")
       .isLength({ min: 6 })
-      .withMessage("Senha deve ter pelo menos 6 caracteres"),
+      .withMessage("Password must be at least 6 characters long"),
     body("confirmPassword")
       .not()
       .isEmpty()
-      .withMessage("Confirme a senha é obrigatório")
+      .withMessage("Confirm Password is required")
       .custom((value, { req }) => value === req.body.password)
-      .withMessage("As senhas não coincidem"),
+      .withMessage("Passwords do not match"),
   ];
 };
 
@@ -33,21 +33,21 @@ const loginValidation = () => [
   body("email")
     .not()
     .isEmpty()
-    .withMessage("Email é obrigatório")
+    .withMessage("Email is required")
     .isEmail()
-    .withMessage("Endereço de email inválido"),
-  body("password").not().isEmpty().withMessage("Senha é obrigatória"),
+    .withMessage("Invalid email address"),
+  body("password").not().isEmpty().withMessage("Password is required"),
 ];
 
 const userUpdateValidation = () => [
   body("name")
     .optional()
     .isLength({ min: 3 })
-    .withMessage("Nome deve ter pelo menos 3 caracteres"),
+    .withMessage("Name must be at least 3 characters long"),
   body("password")
     .optional()
     .isLength({ min: 6 })
-    .withMessage("Senha deve ter pelo menos 6 caracteres"),
+    .withMessage("Password must be at least 6 characters long"),
 ];
 
 export { createUserValidation, loginValidation, userUpdateValidation };
