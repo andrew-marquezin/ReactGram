@@ -20,8 +20,8 @@ userRouter.put(
   imageUpload.single("profileImage"),
   userController.update,
 );
-userRouter.get("/:id", userController.getUserById);
 userRouter.get("/profile", authGuard, userController.getCurrentUser);
+userRouter.get("/:id", userController.getUserById);
 userRouter.post(
   "/register",
   createUserValidation(),

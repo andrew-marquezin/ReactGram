@@ -108,6 +108,10 @@ export class UserController {
         user.bio = bio;
       }
 
+      if (profileImage) {
+        user.profileImage = profileImage;
+      }
+
       await user.save();
 
       res.status(200).json(user);
