@@ -64,7 +64,7 @@ export default function Register() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <SubmitBtn loading={loading} error={error} />
+        <SubmitBtn loading={loading} error={error} value="Cadastrar" />
       </form>
       <p>
         Já tem conta? Faça login <Link to="/login">aqui</Link>

@@ -45,7 +45,7 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <SubmitBtn loading={loading} error={error} />
+        <SubmitBtn loading={loading} error={error} value="Entrar" />
       </form>
       <p>
         Não tem conta? <Link to="/register">Clique aqui</Link>
