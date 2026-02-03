@@ -1,13 +1,13 @@
 import type { methodType } from "../Types/apiTypes";
 
 export const api = "http://localhost:5000/api";
-export const upload = "http://localhost:5000/uploads/";
+export const upload = "http://localhost:5000/uploads";
 
 export const requestConfig = (
   method: methodType,
   data?: any,
   token?: string,
-  image?: string,
+  image: boolean = false,
 ) => {
   let config: RequestInit;
 

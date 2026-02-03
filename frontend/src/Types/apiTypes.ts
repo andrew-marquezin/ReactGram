@@ -11,3 +11,14 @@ export type LoginUserType = {
   email: string;
   password: string;
 };
+
+export type UserType = {
+  _id: string;
+  name: string;
+  email: string;
+  bio?: string;
+  profileImage?: File;
+  password?: string;
+  createdAt: string;
+  updatedAt: string;
+};
