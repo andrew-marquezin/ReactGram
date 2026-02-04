@@ -27,11 +27,13 @@ export type PhotoType = {
   image: string;
   comments: CommentType[];
   likes: string[];
+  userId: string;
+  userName: string;
 };
 
 export type CommentType = {
-  _id: string;
   userId: string;
   userName: string;
-  text: string;
+  userImage?: string;
+  comment: string;
 };
