@@ -19,6 +19,19 @@ export type UserType = {
   bio?: string;
   profileImage?: File;
   password?: string;
-  createdAt: string;
-  updatedAt: string;
+};
+
+export type PhotoType = {
+  _id: string;
+  title: string;
+  image: string;
+  comments: CommentType[];
+  likes: string[];
+};
+
+export type CommentType = {
+  _id: string;
+  userId: string;
+  userName: string;
+  text: string;
 };
